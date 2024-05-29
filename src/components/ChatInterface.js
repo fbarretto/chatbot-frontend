@@ -58,8 +58,8 @@ const ChatInterface = () => {
       id: chatbotId,
       chat_history: chatHistory,
       prompt: userMessage,
-      nsfw: true,
-      length: 20
+      nsfw: false,
+      length: 40
     };
     const response = await axios.post(
       `${API_URL}/chat/`,
