@@ -3,7 +3,7 @@ import axios from "axios";
 import "./ChatInterface.css";
 import profileImage from './1234.jpeg';
 
-const ChatInterface = () => {
+const ChatInterface = ({ chatbotId }) => {
   const [userMessage, setUserMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [botProfileImage, setBotProfileImage] = useState(null);
@@ -13,9 +13,7 @@ const ChatInterface = () => {
   useEffect(() => {
     const fetchBotProfileImage = async () => {
       try {
-        const personaId = 20240502214315;
-        const response = await axios.get(`${API_URL}/persona/${personaId}/image`);
-        
+        const response = await axios.get(`${API_URL}/persona/${chatbotId}/image`);
         if (response.data && response.data.image_base64) {
           const base64Image = response.data.image_base64;
           setBotProfileImage(`data:image/png;base64,${base64Image}`);
@@ -28,7 +26,7 @@ const ChatInterface = () => {
     };
     
     fetchBotProfileImage();
-  }, []);
+  }, [chatbotId]);
   
   const handleSendMessage = async () => {
     if (userMessage.trim() !== "") {
@@ -53,7 +51,6 @@ const ChatInterface = () => {
   intervalId = setInterval(updateDots, 300); 
   
   try {
-    const chatbotId = 20240502214315;
     const payload = {
       id: chatbotId,
       chat_history: chatHistory,

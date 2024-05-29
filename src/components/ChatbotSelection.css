@@ -1,0 +1,43 @@
+/* ChatbotSelection.css */
+.chatbot-selection-container {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+  overflow-y: auto;
+  height: 600px; /* adjust this to your desired height */
+}
+
+.chatbot-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.chatbot-item {
+  text-align: center;
+}
+
+.chatbot-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.chatbot-image-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chatbot-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
