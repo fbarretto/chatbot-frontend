@@ -42,17 +42,6 @@
   justify-content: flex-start;
 }
 
-.bot-message:last-child {
-  animation: typing 1s steps(3, end) infinite;
-}
-
-@keyframes typing { 
-  0%, 20% { content: "Typing"; }
-  40% { content: "Typing ."; }
-  60% { content: "Typing .."; }
-  80%, 100% { content: "Typing ..."; }
-}
-
 .chat-input {
   display: flex;
   flex-shrink: 0;
