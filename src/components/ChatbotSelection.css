@@ -1,43 +1,51 @@
-/* ChatbotSelection.css */
+/* src/components/ChatbotSelection.css */
 .chatbot-selection-container {
-  width: 80%;
-  margin: 40px auto;
-  text-align: center;
-  overflow-y: auto;
-  height: 600px; /* adjust this to your desired height */
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 .chatbot-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    /* justify-content: center; Center the grid items horizontally */
 }
 
 .chatbot-item {
-  text-align: center;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.2s ease-in-out; 
+}
+
+.chatbot-item:hover {
+    background-color: rgba(0, 0, 0, 0.1); 
 }
 
 .chatbot-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 
 .chatbot-image-placeholder {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #ccc;
-  color: #666;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .chatbot-name {
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
