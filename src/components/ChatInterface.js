@@ -41,15 +41,15 @@ const ChatInterface = ({ chatbotId }) => {
       let intervalId;
       const updateDots = () => {
         dots = dots.length < 3 ? dots + "." : "";
+        console.log(dots.padEnd(3, " ")+ "end");
         setChatHistory((prevHistory) =>
           prevHistory.map((msg, index) =>
-            index === prevHistory.length - 1 ? { ...msg, content: "Typing " + dots } : msg
+            index === prevHistory.length - 1 ? { ...msg, content: "Typing " + dots.padEnd(3, " ") } : msg
       )
     );
   };
   
   intervalId = setInterval(updateDots, 300); 
-  
   try {
     const payload = {
       id: chatbotId,
@@ -58,11 +58,13 @@ const ChatInterface = ({ chatbotId }) => {
       nsfw: false,
       length: 40
     };
-    const response = await axios.post(
-      `${API_URL}/chat/`,
-      payload
-    );
-    
+    // const response = await axios.post(
+    //   `${API_URL}/chat/`,
+    //   payload
+    // );
+    await timeout(10000); //for 1 sec delay
+    let response = {data : "Hello, how can I help you today?"};
+    // response.data = "Hello, how can I help you today?";
     clearInterval(intervalId); 
     setChatHistory((prevHistory) =>
       prevHistory.map((msg, index) =>
@@ -75,6 +77,10 @@ const ChatInterface = ({ chatbotId }) => {
 }
 }
 };
+
+function timeout(delay) {
+  return new Promise( res => setTimeout(res, delay) );
+}
 
 const handleKeyPress = (event) => {
   if (event.key === "Enter") {
@@ -91,7 +97,7 @@ return (
       <img 
       src={botProfileImage || profileImage}
       alt="Bot profile" 
-      className="profile-image left" 
+      className="profile-image left preserve-whitespace" 
       />
     )}
     <div className={`message ${message.role === "user" ? "user-message" : "bot-message"}`}>
