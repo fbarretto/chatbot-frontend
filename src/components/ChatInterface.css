@@ -87,22 +87,22 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  object-fit: cover; /* Ensure the image fills the circle */
-  margin-right: 10px; /* Adjust spacing as needed */
+  object-fit: cover;
+  margin-right: 10px;
 }
 
-.message-content { /* New class to style message content separately */
-  display: inline-block; /* Allow text to wrap naturally */
+.message-content {
+  display: inline-block;
 }
 
 .message-row {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 10px; /* Adjust spacing as needed */
+  margin-bottom: 10px;
 }
 
 .user-row {
-  justify-content: flex-end; /* Push user messages to the right */
+  justify-content: flex-end;
 }
 
 .profile-image.left {

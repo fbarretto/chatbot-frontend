@@ -33,11 +33,16 @@ const fetchChatbots = async (token) => {
 const fetchChatbotImages = async (newChatbots) => {
     try {
         const promises = newChatbots.map(async (chatbot) => {
-            const response = await axios.get(`${API_URL}/persona/${chatbot.id}/image`);
-            if (response.data && response.data.image_base64) {
-                return { id: chatbot.id, image: `data:image/png;base64,${response.data.image_base64}` };
-            } else {
-                console.error(`No valid image data found for chatbot ${chatbot.id}.`);
+            try {
+                const response = await axios.get(`${API_URL}/persona/${chatbot.id}/image`);
+                if (response.data && response.data.image_base64) {
+                    return { id: chatbot.id, image: `data:image/png;base64,${response.data.image_base64}` };
+                } else {
+                    console.error(`No valid image data found for chatbot ${chatbot.id}.`);
+                    return { id: chatbot.id, image: null };
+                }
+            } catch (error) {
+                console.error(`Error fetching image for chatbot ${chatbot.id}:`, error);
                 return { id: chatbot.id, image: null };
             }
         });

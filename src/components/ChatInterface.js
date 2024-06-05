@@ -41,7 +41,7 @@ const ChatInterface = ({ chatbotId }) => {
       let intervalId;
       const updateDots = () => {
         dots = dots.length < 3 ? dots + "." : "";
-        console.log(dots.padEnd(3, " ")+ "end");
+        
         setChatHistory((prevHistory) =>
           prevHistory.map((msg, index) =>
             index === prevHistory.length - 1 ? { ...msg, content: "Typing " + dots.padEnd(3, " ") } : msg
@@ -62,9 +62,9 @@ const ChatInterface = ({ chatbotId }) => {
     //   `${API_URL}/chat/`,
     //   payload
     // );
-    await timeout(10000); //for 1 sec delay
+    await timeout(5000); //for 5 sec delay
     let response = {data : "Hello, how can I help you today?"};
-    // response.data = "Hello, how can I help you today?";
+    
     clearInterval(intervalId); 
     setChatHistory((prevHistory) =>
       prevHistory.map((msg, index) =>
